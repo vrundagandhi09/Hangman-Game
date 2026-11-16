@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangman Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game-card">
+    <header>
+      <p class="eyebrow">CLASS PROJECT</p>
+      <h1>Hangman</h1>
+      <p class="subtitle">Choose a word, then guess it one letter at a time.</p>
+    </header>
+
+    <section class="setup-panel" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">1. Choose a word</h2>
+      <form id="word-form">
+        <label for="word-input">Secret word</label>
+        <div class="input-row">
+          <input id="word-input" type="password" placeholder="Enter a word" autocomplete="off" required>
+          <button type="submit" id="start-button">Start game</button>
+        </div>
+        <p class="hint">Use letters only. The word is hidden after you start.</p>
+      </form>
+    </section>
+
+    <section class="play-panel" aria-labelledby="play-heading">
+      <h2 id="play-heading">2. Guess the word</h2>
+      <div class="hangman-drawing" role="img" aria-label="Hangman drawing. A body part appears after each incorrect guess.">
+        <svg viewBox="0 0 320 300" aria-hidden="true">
+          <!-- Gallows -->
+          <line class="gallows-line" x1="35" y1="275" x2="155" y2="275" />
+          <line class="gallows-line" x1="85" y1="275" x2="85" y2="20" />
+          <line class="gallows-line" x1="85" y1="20" x2="235" y2="20" />
+          <line class="gallows-line" x1="85" y1="82" x2="145" y2="20" />
+          <line class="gallows-line" x1="235" y1="20" x2="235" y2="65" />
+          <!-- Figure: revealed one part per incorrect guess -->
+          <circle class="person-part" id="head" cx="235" cy="92" r="27" />
+          <line class="person-part" id="body" x1="235" y1="119" x2="235" y2="190" />
+          <line class="person-part" id="left-arm" x1="235" y1="137" x2="198" y2="168" />
+          <line class="person-part" id="right-arm" x1="235" y1="137" x2="272" y2="168" />
+          <line class="person-part" id="left-leg" x1="235" y1="190" x2="198" y2="242" />
+          <line class="person-part" id="right-leg" x1="235" y1="190" x2="272" y2="242" />
+        </svg>
+      </div>
+      <div class="word-display" id="word-display" aria-label="Hidden word">Choose a word to begin</div>
+      <div class="game-info">
+        <p><strong>Incorrect guesses left:</strong> <span id="remaining-guesses">6</span></p>
+        <p><strong>Guessed letters:</strong> <span id="guessed-letters">None</span></p>
+      </div>
+
+      <form id="guess-form">
+        <label for="guess-input">Enter one letter</label>
+        <div class="input-row">
+          <input id="guess-input" type="text" maxlength="1" placeholder="A" autocomplete="off" disabled>
+          <button type="submit" id="guess-button" disabled>Guess</button>
+        </div>
+      </form>
+
+      <div class="guesses-area" id="guesses-area" aria-live="polite">
+        <h3>Game messages</h3>
+        <p id="game-message">Select a word before making your first guess.</p>
+      </div>
+      <button type="button" class="secondary-button" id="new-game-button">New game</button>
+    </section>
+
+    <footer>Hangman · JavaScript class project</footer>
+  </main>
+</body>
+</html>
